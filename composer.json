@@ -1,0 +1,38 @@
+{
+    "name": "tarsisioxavier/magic-object",
+    "description": "Simple object inspired on Laravel's models",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "object-oriented",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Tarsísio Xavier",
+            "email": "tarsisiox@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "TarsisioXavier\\MagicObject\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
+    "require": {
+        "php": "^7.3|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "fakerphp/faker": "^1.15"
+    }
+}
