@@ -2,9 +2,13 @@
 
 namespace TarsisioXavier\MagicObject;
 
-abstract class MagicObject
+use ArrayAccess;
+use Iterator;
+
+abstract class MagicObject implements ArrayAccess, Iterator
 {
-    use Concerns\HasAttributes;
+    use Concerns\HasAttributes,
+        Concerns\IteratesWithAttributes;
 
     public function __construct(?array $attributes = null)
     {

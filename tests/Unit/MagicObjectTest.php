@@ -76,6 +76,29 @@ class MagicObjectTest extends TestCase
     /**
      * @test
      */
+    public function is_array_accessable()
+    {
+        $object = new DummyObject($attributes = [
+            'name' => $this->faker->name,
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email
+        ]);
+
+        foreach ($object as $attribute => $value) {
+            $this->assertEquals($attributes[$attribute], $value);
+        }
+
+        $attributes['phone'] = $this->faker->phoneNumber();
+        $object->phone = $attributes['phone'];
+
+        foreach ($object as $attribute => $value) {
+            $this->assertEquals($attributes[$attribute], $value);
+        }
+    }
+
+    /**
+     * @test
+     */
     public function can_create_attribute_accessor()
     {
         $object = new DummyObject([
