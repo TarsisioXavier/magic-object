@@ -12,6 +12,8 @@ abstract class MagicObject implements ArrayAccess, Iterator
 
     public function __construct(?array $attributes = null)
     {
+        $this->bootTraits();
+
         if ($attributes) {
             $this->original = $attributes;
             $this->fill($attributes);
@@ -31,6 +33,27 @@ abstract class MagicObject implements ArrayAccess, Iterator
     public function __unset($offset)
     {
         unset($this->attributes[$offset]);
+    }
+
+    /**
+     * Call methods of traits starting with 'boot'.
+     * 
+     * @return null
+     */
+    protected function bootTraits()
+    {
+        $traits = array_merge(
+            class_uses(static::class),
+            class_uses(self::class)
+        );
+
+        foreach ($traits as $trait => $namespace) {
+            $traitName = array_slice(explode('\\', $namespace), -1, 1)[0];
+
+            if (method_exists($trait, 'boot' . $traitName)) {
+                $this->{'boot' . $traitName}();
+            }
+        }
     }
 
     /**

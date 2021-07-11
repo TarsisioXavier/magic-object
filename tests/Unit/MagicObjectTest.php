@@ -108,4 +108,14 @@ class MagicObjectTest extends TestCase
 
         $this->assertEquals($object->full_name, "{$name} {$lastName}");
     }
+
+    /**
+     * @test
+     */
+    public function boots_traits()
+    {
+        $object = new DummyObject();
+
+        $this->assertEquals('Some dummy value here', $object->traitProperty);
+    }
 }
