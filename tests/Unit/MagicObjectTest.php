@@ -22,7 +22,7 @@ class MagicObjectTest extends TestCase
     /**
      * @test
      */
-    public function can_intantiate_object()
+    public function can_instantiate_object()
     {
         $object = new DummyObject();
 
