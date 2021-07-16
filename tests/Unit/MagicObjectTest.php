@@ -118,4 +118,16 @@ class MagicObjectTest extends TestCase
 
         $this->assertEquals('Some dummy value here', $object->traitProperty);
     }
+
+    /**
+     * @test
+     */
+    public function can_mutate_attributes_on_setting()
+    {
+        $datetime = $this->faker->dateTime();
+
+        $object = new DummyObject(['date' => $datetime]);
+
+        $this->assertEquals($datetime->format('Y-m-d'), $object->date);
+    }
 }

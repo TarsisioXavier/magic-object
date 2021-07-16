@@ -34,7 +34,7 @@ trait HasAttributes
     }
 
     /**
-     * Checks if the an accessor for the attribute exists.
+     * Checks if the object has accessor for the attribute exists.
      * 
      * @param  mixed  $value
      * @return bool
@@ -61,13 +61,43 @@ trait HasAttributes
     /**
      * Set a given attribute on the model.
      *
-     * @param  string  $key
+     * @param  string  $field
      * @param  mixed  $value
      * @return mixed
      */
     public function setAttribute($field, $value)
     {
-        $this->attributes[$field] = $value;
+        if ($this->hasMutator($field)) {
+            return $this->callMutatorAttribute($field, $value);
+        }
+
+        return $this->attributes[$field] = $value;
+    }
+
+    /**
+     * Checks if the object has any mutator for the attribute.
+     * 
+     * @param  string  $field
+     * @return bool
+     */
+    public function hasMutator($field)
+    {
+        return method_exists(
+            static::class,
+            'set' . $this->attributeNameToCamelCase($field) . 'Attribute'
+        );
+    }
+
+    /**
+     * Calls the mutator of the attribute.
+     * 
+     * @param  string  $field
+     * @param  mixed  $value
+     * @return mixed
+     */
+    public function callMutatorAttribute($field, $value)
+    {
+        return $this->{'set' . $this->attributeNameToCamelCase($field) . 'Attribute'}($value);
     }
 
     /**

@@ -12,4 +12,9 @@ class DummyObject extends MagicObject
     {
         return "{$this->name} {$this->last_name}";
     }
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = $value->format('Y-m-d');
+    }
 }
