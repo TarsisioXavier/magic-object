@@ -1,5 +1,10 @@
 # Installation
+
+Installation from composer.
+
+~~~~
 composer require tarsisioxavier/magic-object
+~~~~
 
 # Usage
 MagicObject it's a abstract class, which means it cannot be instantiated. You'll need to create another class and extend from it.
