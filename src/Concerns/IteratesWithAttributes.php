@@ -4,15 +4,14 @@ namespace TarsisioXavier\MagicObject\Concerns;
 
 trait IteratesWithAttributes
 {
-    /** @var int */
-    private $iterator = 0;
+    private int $iterator = 0;
 
-    /** @var string[] */
-    private $attributesKeys;
+    /** @var array<string> */
+    private array $attributesKeys;
 
     /**
      * Value of the current attribute.
-     * 
+     *
      * @return mixed
      */
     public function current(): mixed
@@ -22,7 +21,7 @@ trait IteratesWithAttributes
 
     /**
      * Key of the current attribute.
-     * 
+     *
      * @return string
      */
     public function key(): string
@@ -32,7 +31,7 @@ trait IteratesWithAttributes
 
     /**
      * Go fot the next attribute key.
-     * 
+     *
      * @return void
      */
     public function next(): void
@@ -42,7 +41,7 @@ trait IteratesWithAttributes
 
     /**
      * Rewinds class' interator.
-     * 
+     *
      * @return void
      */
     public function rewind(): void
@@ -54,7 +53,7 @@ trait IteratesWithAttributes
 
     /**
      * Checks if there is more.
-     * 
+     *
      * @return bool
      */
     public function valid(): bool

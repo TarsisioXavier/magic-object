@@ -4,16 +4,16 @@ namespace TarsisioXavier\MagicObject\Concerns;
 
 trait HasAttributes
 {
-    /** 
+    /**
      * Attributes transformed in the constructor.
-     * 
+     *
      * @var array<string, mixed>
      */
     public array $attributes;
 
-    /** 
+    /**
      * Original attributes received from the constructor.
-     * 
+     *
      * @var array<string, mixed>
      */
     public array $original;
@@ -22,6 +22,7 @@ trait HasAttributes
      * Get an attribute from the model.
      *
      * @param  string  $value
+     *
      * @return mixed
      */
     public function getAttribute(string $value): mixed
@@ -35,8 +36,9 @@ trait HasAttributes
 
     /**
      * Checks if the object has accessor for the attribute exists.
-     * 
+     *
      * @param  string  $value
+     *
      * @return bool
      */
     public function hasAccessor(string $value): bool
@@ -51,6 +53,7 @@ trait HasAttributes
      * Call the accessor of the attribute.
      *
      * @param  string  $value
+     *
      * @return mixed
      */
     public function callAttributeAccessor(string $value): mixed
@@ -63,6 +66,7 @@ trait HasAttributes
      *
      * @param  string  $field
      * @param  mixed  $value
+     *
      * @return mixed
      */
     public function setAttribute(string $field, $value): mixed
@@ -76,8 +80,9 @@ trait HasAttributes
 
     /**
      * Checks if the object has any mutator for the attribute.
-     * 
+     *
      * @param  string  $field
+     *
      * @return bool
      */
     public function hasMutator(string $field): bool
@@ -90,9 +95,10 @@ trait HasAttributes
 
     /**
      * Calls the mutator of the attribute.
-     * 
+     *
      * @param  string  $field
      * @param  mixed  $value
+     *
      * @return mixed
      */
     public function callMutatorAttribute(string $field, $value): mixed
@@ -102,7 +108,7 @@ trait HasAttributes
 
     /**
      * Return the attributes of the object.
-     * 
+     *
      * @return array
      */
     public function attributesToArray(): array
@@ -112,8 +118,9 @@ trait HasAttributes
 
     /**
      * Transforms the attribute key into Camel Case.
-     * 
+     *
      * @param  string  $attribute
+     *
      * @return string
      */
     public function attributeNameToCamelCase(string $attribute): string
