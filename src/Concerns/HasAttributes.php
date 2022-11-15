@@ -7,24 +7,24 @@ trait HasAttributes
     /** 
      * Attributes transformed in the constructor.
      * 
-     * @var mixed[]
+     * @var array<string, mixed>
      */
-    public $attributes;
+    public array $attributes;
 
     /** 
      * Original attributes received from the constructor.
      * 
-     * @var mixed[]
+     * @var array<string, mixed>
      */
-    public $original;
+    public array $original;
 
     /**
      * Get an attribute from the model.
      *
-     * @param  mixed  $value
+     * @param  string  $value
      * @return mixed
      */
-    public function getAttribute($value)
+    public function getAttribute(string $value): mixed
     {
         if ($this->hasAccessor($value)) {
             return $this->callAttributeAccessor($value);
@@ -36,10 +36,10 @@ trait HasAttributes
     /**
      * Checks if the object has accessor for the attribute exists.
      * 
-     * @param  mixed  $value
+     * @param  string  $value
      * @return bool
      */
-    public function hasAccessor($value)
+    public function hasAccessor(string $value): bool
     {
         return method_exists(
             static::class,
@@ -50,10 +50,10 @@ trait HasAttributes
     /**
      * Call the accessor of the attribute.
      *
-     * @param  mixed  $value
+     * @param  string  $value
      * @return mixed
      */
-    public function callAttributeAccessor($value)
+    public function callAttributeAccessor(string $value): mixed
     {
         return $this->{'get' . $this->attributeNameToCamelCase($value) . 'Attribute'}();
     }
@@ -65,7 +65,7 @@ trait HasAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    public function setAttribute($field, $value)
+    public function setAttribute(string $field, $value): mixed
     {
         if ($this->hasMutator($field)) {
             return $this->callMutatorAttribute($field, $value);
@@ -80,7 +80,7 @@ trait HasAttributes
      * @param  string  $field
      * @return bool
      */
-    public function hasMutator($field)
+    public function hasMutator(string $field): bool
     {
         return method_exists(
             static::class,
@@ -95,7 +95,7 @@ trait HasAttributes
      * @param  mixed  $value
      * @return mixed
      */
-    public function callMutatorAttribute($field, $value)
+    public function callMutatorAttribute(string $field, $value): mixed
     {
         return $this->{'set' . $this->attributeNameToCamelCase($field) . 'Attribute'}($value);
     }
@@ -105,7 +105,7 @@ trait HasAttributes
      * 
      * @return array
      */
-    public function attributesToArray()
+    public function attributesToArray(): array
     {
         return $this->attributes;
     }
@@ -116,7 +116,7 @@ trait HasAttributes
      * @param  string  $attribute
      * @return string
      */
-    public function attributeNameToCamelCase(string $attribute)
+    public function attributeNameToCamelCase(string $attribute): string
     {
         $words = explode('_', $attribute);
 

@@ -1,0 +1,23 @@
+version: '3.3'
+
+services:
+  magic-object:
+    container_name: magic-object
+    build:
+      dockerfile: ./docker/php-fpm81.Dockerfile
+      context: .
+    volumes:
+      - .:/var/www/app
+    networks:
+      magic-object-network:
+        ipv4_address: 172.40.10.10
+        aliases:
+          - magic-object
+
+networks:
+  magic-object-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.40.10.0/24

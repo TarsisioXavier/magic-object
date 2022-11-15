@@ -15,7 +15,7 @@ trait IteratesWithAttributes
      * 
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->getAttribute($this->key());
     }
@@ -25,7 +25,7 @@ trait IteratesWithAttributes
      * 
      * @return string
      */
-    public function key()
+    public function key(): string
     {
         return $this->attributesKeys[$this->iterator];
     }
@@ -33,19 +33,19 @@ trait IteratesWithAttributes
     /**
      * Go fot the next attribute key.
      * 
-     * @return int
+     * @return void
      */
-    public function next()
+    public function next(): void
     {
-        return ++$this->iterator;
+        $this->iterator++;
     }
 
     /**
      * Rewinds class' interator.
      * 
-     * @return null
+     * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->iterator = 0;
 
@@ -57,7 +57,7 @@ trait IteratesWithAttributes
      * 
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return isset($this->attributesKeys[$this->iterator]);
     }

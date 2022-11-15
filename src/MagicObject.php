@@ -38,9 +38,9 @@ abstract class MagicObject implements ArrayAccess, Iterator
     /**
      * Call methods of traits starting with 'boot'.
      * 
-     * @return null
+     * @return void
      */
-    protected function bootTraits()
+    protected function bootTraits(): void
     {
         $traits = array_merge(
             class_uses(static::class),
@@ -60,9 +60,9 @@ abstract class MagicObject implements ArrayAccess, Iterator
      * Sets an array of attributes.
      * 
      * @param  array  $attributes
-     * @return null
+     * @return void
      */
-    public function fill(array $attributes)
+    public function fill(array $attributes): void
     {
         foreach ($attributes as $field => $value) {
             $this->setAttribute($field, $value);
@@ -75,7 +75,7 @@ abstract class MagicObject implements ArrayAccess, Iterator
      * @param  mixed  $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return ! is_null($this->getAttribute($offset));
     }
@@ -86,7 +86,7 @@ abstract class MagicObject implements ArrayAccess, Iterator
      * @param  mixed  $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->getAttribute($offset);
     }
@@ -98,9 +98,9 @@ abstract class MagicObject implements ArrayAccess, Iterator
      * @param  mixed  $value
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
-        return $this->setAttribute($offset, $value);
+        $this->setAttribute($offset, $value);
     }
 
     /**
@@ -109,7 +109,7 @@ abstract class MagicObject implements ArrayAccess, Iterator
      * @param  mixed  $offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->__unset($offset);
     }
