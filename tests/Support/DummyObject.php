@@ -2,9 +2,9 @@
 
 namespace Tests\Support;
 
-use TarsisioXavier\MagicObject\MagicObject;
+use MagicObject\DataModel;
 
-class DummyObject extends MagicObject
+class DummyObject extends DataModel
 {
     use Traits\SomeDummyTrait;
 

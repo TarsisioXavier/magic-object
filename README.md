@@ -7,16 +7,16 @@ composer require tarsisioxavier/magic-object
 ~~~~
 
 # Usage
-MagicObject it's a abstract class, which means it cannot be instantiated. You'll need to create another class and extend from it.
+DataModel it's a abstract class, which means it cannot be instantiated. You'll need to create another class and extend from it.
 
 ~~~~PHP
 <?php
 
 require('vendor/autoload.php');
 
-use TarsisioXavier\MagicObject\MagicObject;
+use MagicObject\DataModel;
 
-class ExampleClass extends MagicObject
+class ExampleClass extends DataModel
 {
     // Your code here...
 }
@@ -28,7 +28,7 @@ var_dump($exampleObject);
 
 ### Attributes
 
-MagicObject contains a property which holds all the attributes of the class - *except the ones matching some class' property* - making them accessable like the property exists within the class.
+DataModel contains a property which holds all the attributes of the class - *except the ones matching some class' property* - making them accessable like the property exists within the class.
 
 You may notice an "original" property in your objects, that's just to hold the attributes passed to the class' contructor.
 
@@ -38,9 +38,9 @@ This is usefull when you're encapsulating data comming from APIs to log some stu
 
 require('vendor/autoload.php');
 
-use TarsisioXavier\MagicObject\MagicObject;
+use MagicObject\DataModel;
 
-class ExampleClass extends MagicObject
+class ExampleClass extends DataModel
 {
     // Your code here...
 }
@@ -67,7 +67,7 @@ print '(' . $anotherExampleObject->email . ")\n";
 
 ### Attributes Accessors
 
-If you need to modify the way you access the object's attribute, you can write an accessor in the object extending the MagicObject.
+If you need to modify the way you access the object's attribute, you can write an accessor in the object extending the DataModel.
 
 The example below creates a object with name and CNPJ. The accessor in the ExampleClass will try to return the CPF of the object, since it doesn't exists a CNPJ will be returned.
 
@@ -76,9 +76,9 @@ The example below creates a object with name and CNPJ. The accessor in the Examp
 
 require('vendor/autoload.php');
 
-use TarsisioXavier\MagicObject\MagicObject;
+use MagicObject\DataModel;
 
-class ExampleClass extends MagicObject
+class ExampleClass extends DataModel
 {
     public function getDocumentAttribute()
     {
@@ -108,9 +108,9 @@ The example below will receive a DateTime object and will transform it into a si
 
 require('vendor/autoload.php');
 
-use TarsisioXavier\MagicObject\MagicObject;
+use MagicObject\DataModel;
 
-class ExampleClass extends MagicObject
+class ExampleClass extends DataModel
 {
     public function setDateAttribute($value)
     {

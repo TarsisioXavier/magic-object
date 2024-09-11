@@ -17,7 +17,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "TarsisioXavier\\MagicObject\\": "src/"
+            "MagicObject\\": "src/"
         }
     },
     "autoload-dev": {

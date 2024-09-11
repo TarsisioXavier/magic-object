@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Faker\Factory as FakerFactory;
+use MagicObject\DataModel;
 use PHPUnit\Framework\TestCase;
-use TarsisioXavier\MagicObject\MagicObject;
 use Tests\Support\DummyObject;
 
 class MagicObjectTest extends TestCase
@@ -26,14 +26,14 @@ class MagicObjectTest extends TestCase
     {
         $object = new DummyObject();
 
-        $this->assertInstanceOf(MagicObject::class, $object);
+        $this->assertInstanceOf(DataModel::class, $object);
 
         $object = new DummyObject([
             'name' => $this->faker->name,
             'email' => $this->faker->email
         ]);
 
-        $this->assertInstanceOf(MagicObject::class, $object);
+        $this->assertInstanceOf(DataModel::class, $object);
     }
 
     /**
@@ -46,10 +46,12 @@ class MagicObjectTest extends TestCase
             'email' => $email = $this->faker->email
         ]);
 
-        $this->assertEquals([
-            'name' => $name,
-            'email' => $email
-            ], $object->attributesToArray(),
+        $this->assertEquals(
+            [
+                'name' => $name,
+                'email' => $email
+            ],
+            $object->attributesToArray(),
         );
 
         $object->name = $this->faker->name;

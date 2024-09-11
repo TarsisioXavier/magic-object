@@ -1,6 +1,6 @@
 <?php
 
-namespace TarsisioXavier\MagicObject\Concerns;
+namespace MagicObject\Concerns;
 
 trait HasAttributes
 {

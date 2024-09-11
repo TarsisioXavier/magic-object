@@ -1,11 +1,11 @@
 <?php
 
-namespace TarsisioXavier\MagicObject;
+namespace MagicObject;
 
 use ArrayAccess;
 use Iterator;
 
-abstract class MagicObject implements ArrayAccess, Iterator
+abstract class DataModel implements ArrayAccess, Iterator
 {
     use Concerns\HasAttributes,
         Concerns\IteratesWithAttributes;
