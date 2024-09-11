@@ -5,6 +5,8 @@ use Tests\Support\DummyObject;
 
 use function Pest\Faker\fake;
 
+covers(DataModel::class);
+
 dataset('filled object', [
     new DummyObject([
         'name' => fake()->name(),
