@@ -39,8 +39,6 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/pest",
-        "insights": "./vendor/bin/phpinsights analyse src/ --no-interaction --flush-cache --config-path=configs/phpinsights.php",
-        "insights-fix": "@insights --fix"
+        "test": "./vendor/bin/pest"
     }
 }
