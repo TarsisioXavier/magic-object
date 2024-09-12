@@ -1,6 +1,7 @@
+.coverage/
 .AppleDouble
 .DS_Store
 .LSOverride
 .phpunit.result.cache
-/vendor/
+vendor/
 composer.lock

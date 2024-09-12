@@ -30,7 +30,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^3.0",
-        "pestphp/pest-plugin-faker": "^3.0"
+        "pestphp/pest-plugin-faker": "^3.0",
+        "phpstan/phpstan": "^1.12"
     },
     "config": {
         "allow-plugins": {
@@ -39,6 +40,8 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/pest"
+        "test": "./vendor/bin/pest",
+        "coverage": "./vendor/bin/pest --coverage-html=.coverage",
+        "phpstan": "./vendor/bin/phpstan analyse src"
     }
 }
