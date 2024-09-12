@@ -40,8 +40,13 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/pest",
-        "coverage": "./vendor/bin/pest --coverage-html=.coverage",
-        "phpstan": "./vendor/bin/phpstan analyse src"
+        "test": "vendor/bin/pest",
+        "coverage": "vendor/bin/pest --coverage-html=.coverage/html",
+        "phpstan": "vendor/bin/phpstan analyse src",
+        "ci": [
+            "vendor/bin/phpstan analyse --no-progress src",
+            "vendor/bin/pest --no-progress --parallel --coverage-xml=.coverage/xml",
+            "vendor/bin/pest --no-cache --mutate --parallel"
+        ]
     }
 }
