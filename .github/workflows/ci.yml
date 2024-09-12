@@ -14,21 +14,22 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['8.3']
-        coverage: [pcov]
+        php-version: [8.1, 8.2, 8.3]
+
+    name: PHP ${{ matrix.php-version }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: ${{ matrix.coverage }}
+          coverage: pcov
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --classmap-authoritative --no-interaction
 
       - name: Run tests
         run: composer ci
