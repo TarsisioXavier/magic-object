@@ -19,7 +19,7 @@ it('can instantiate an object', function ($object) {
     expect($object)->toBeInstanceOf(DataModel::class);
 })->with([
     new DummyObject(),
-    new DummyObject(['name' => fake()->name(), 'email' => fake()->email()]),
+    new DummyObject(['name' => fake()->name()]),
 ]);
 
 it('can set attributes', function () {
@@ -33,9 +33,10 @@ it('can set attributes', function () {
         'email' => $email
     ]);
 
-    $object->name = fake()->name();
+    $newName = fake()->name();
+    $object->name = $newName;
 
-    expect($object->name)->not->toBe($name);
+    expect($object->name)->toBe($newName);
 });
 
 it('can unset attributes', function ($object) {
