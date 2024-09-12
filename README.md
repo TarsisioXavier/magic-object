@@ -2,14 +2,14 @@
 
 Installation from composer.
 
-~~~~
+```
 composer require tarsisioxavier/magic-object
-~~~~
+```
 
 # Usage
 DataModel it's a abstract class, which means it cannot be instantiated. You'll need to create another class and extend from it.
 
-~~~~PHP
+```PHP
 <?php
 
 require('vendor/autoload.php');
@@ -24,7 +24,7 @@ class ExampleClass extends DataModel
 $exampleObject = new ExampleClass();
 
 var_dump($exampleObject);
-~~~~
+```
 
 ### Attributes
 
@@ -33,7 +33,7 @@ DataModel contains a property which holds all the attributes of the class - *exc
 You may notice an "original" property in your objects, that's just to hold the attributes passed to the class' contructor.
 
 This is usefull when you're encapsulating data comming from APIs to log some stuff and debug when needed.
-~~~~PHP
+```PHP
 <?php
 
 require('vendor/autoload.php');
@@ -63,7 +63,7 @@ $anotherExampleObject = new ExampleClass([
 print $anotherExampleObject->name;
 print ' ';
 print '(' . $anotherExampleObject->email . ")\n";
-~~~~
+```
 
 ### Attributes Accessors
 
@@ -71,7 +71,7 @@ If you need to modify the way you access the object's attribute, you can write a
 
 The example below creates a object with name and CNPJ. The accessor in the ExampleClass will try to return the CPF of the object, since it doesn't exists a CNPJ will be returned.
 
-~~~~PHP
+```PHP
 <?php
 
 require('vendor/autoload.php');
@@ -95,7 +95,7 @@ $exampleObject = new ExampleClass([
 
 // The object don't have any CPF, so it'll print the CNPJ instead.
 print $exampleObject->document . "\n";
-~~~~
+```
 
 ### Attributes Mutators
 
@@ -103,7 +103,7 @@ When you want to modify the data before filling your object, there is a option t
 
 The example below will receive a DateTime object and will transform it into a simple string carring only the year, month, day, the hour and the minutes from the value (parameter) informed.
 
-~~~~PHP
+```PHP
 <?php
 
 require('vendor/autoload.php');
@@ -130,7 +130,7 @@ $anotherObject->date = $datetime;
 
 // Same output.
 print $object->date . "\n";
-~~~~
+```
 
 ### Bootable Traits (Work in progress...)
 
