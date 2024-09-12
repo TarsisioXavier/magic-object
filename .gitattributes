@@ -9,4 +9,4 @@
 .gitignore export-ignore
 docker-compose.yml export-ignore
 phpunit.xml.dist export-ignore
-phpunit.xml
+phpunit.xml export-ignore
