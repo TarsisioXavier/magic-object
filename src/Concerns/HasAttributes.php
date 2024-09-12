@@ -69,7 +69,7 @@ trait HasAttributes
      *
      * @return mixed
      */
-    public function setAttribute(string $field, $value): mixed
+    public function setAttribute(string $field, mixed $value): mixed
     {
         if ($this->hasMutator($field)) {
             return $this->callMutatorAttribute($field, $value);
@@ -101,7 +101,7 @@ trait HasAttributes
      *
      * @return mixed
      */
-    public function callMutatorAttribute(string $field, $value): mixed
+    public function callMutatorAttribute(string $field, mixed $value): mixed
     {
         return $this->{'set' . $this->attributeNameToCamelCase($field) . 'Attribute'}($value);
     }
@@ -109,7 +109,7 @@ trait HasAttributes
     /**
      * Return the attributes of the object.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function attributesToArray(): array
     {

@@ -5,11 +5,22 @@ namespace MagicObject;
 use ArrayAccess;
 use Iterator;
 
+/**
+ * @implements ArrayAccess<string, mixed>
+ * @implements Iterator<string, mixed>
+ */
 abstract class DataModel implements ArrayAccess, Iterator
 {
     use Concerns\HasAttributes,
         Concerns\IteratesWithAttributes;
 
+    /**
+     * Class' constructor.
+     *
+     * @param  null|array<string, mixed>  $attributes
+     *
+     * @return DataModel
+     */
     public function __construct(?array $attributes = null)
     {
         $this->bootTraits();
@@ -20,16 +31,38 @@ abstract class DataModel implements ArrayAccess, Iterator
         }
     }
 
+    /**
+     * Class' property getter.
+     *
+     * @param  string  $value
+     *
+     * @return mixed
+     */
     public function __get($value)
     {
         return $this->getAttribute($value);
     }
 
+    /**
+     * Class' property setter.
+     *
+     * @param  string  $field
+     * @param  mixed  $value
+     *
+     * @return void
+     */
     public function __set($field, $value)
     {
-        return $this->setAttribute($field, $value);
+        $this->setAttribute($field, $value);
     }
 
+    /**
+     * Class' property unsetter.
+     *
+     * @param  string  $offset
+     *
+     * @return void
+     */
     public function __unset($offset): void
     {
         unset($this->attributes[$offset]);
@@ -38,7 +71,7 @@ abstract class DataModel implements ArrayAccess, Iterator
     /**
      * Sets an array of attributes.
      *
-     * @param  array  $attributes
+     * @param  array<string, mixed>  $attributes
      *
      * @return void
      */
@@ -52,7 +85,7 @@ abstract class DataModel implements ArrayAccess, Iterator
     /**
      * Determine if the given attribute exists.
      *
-     * @param  mixed  $offset
+     * @param  string  $offset
      *
      * @return bool
      */
@@ -64,7 +97,7 @@ abstract class DataModel implements ArrayAccess, Iterator
     /**
      * Get the value for a given offset.
      *
-     * @param  mixed  $offset
+     * @param  string  $offset
      *
      * @return mixed
      */
@@ -76,7 +109,7 @@ abstract class DataModel implements ArrayAccess, Iterator
     /**
      * Set the value for a given offset.
      *
-     * @param  mixed  $offset
+     * @param  string  $offset
      * @param  mixed  $value
      *
      * @return void
@@ -89,7 +122,7 @@ abstract class DataModel implements ArrayAccess, Iterator
     /**
      * Unset the value for a given offset.
      *
-     * @param  mixed  $offset
+     * @param  string  $offset
      *
      * @return void
      */
