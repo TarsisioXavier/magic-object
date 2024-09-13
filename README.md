@@ -1,4 +1,4 @@
-# Installation
+# Installation 🔌
 
 Installation from composer.
 
@@ -6,7 +6,7 @@ Installation from composer.
 composer require tarsisioxavier/magic-object
 ```
 
-# Usage
+# Usage ⛏️
 DataModel it's a abstract class, which means it cannot be instantiated. You'll need to create another class and extend from it.
 
 ```PHP
@@ -132,11 +132,47 @@ $anotherObject->date = $datetime;
 print $object->date . "\n";
 ```
 
-### Bootable Traits (Work in progress...)
+### Bootable Traits  
+You can run any code when your class extending from `DataModel` is instantiated. Look the example below:  
+```php
+<?php
 
-# Testing
-Run all the tests executing `composer test`, if you want specific test to run, try: `composer test -- --filter <the_test_you_want>`.
+require('vendor/autoload.php');
 
-Composer's script 'test' uses the [Pest PHP](https://pestphp.com/) for a better UI experience.
+use MagicObject\DataModel;
 
-You can also run the tests using `./vendor/bin/phpunit` or `./vendor/bin/pest`.
+trait SimpleTrait
+{
+    public string $helloWorld;
+
+    public function bootSimpleTrait()
+    {
+        $this->helloWorld = 'ZA WARUDO!';
+    }
+}
+
+class ExampleClass extends DataModel
+{
+    use SimpleTrait;
+}
+
+$object = new ExampleClass();
+
+echo $object->helloWorld . "\n";
+
+// Output:
+// ZA WARUDO!
+```
+Notice that the method must match with the trait's name.  
+This is completly optional, if the method for booting it's not implemented the `DataModel` class will just ignore it.  
+
+# Testing 🧪
+Run all the tests executing `composer test`, if you want a specific test to run, try: `composer test -- --filter <the_test_you_want>`.  
+
+Composer's script 'test' uses the [Pest PHP](https://pestphp.com).  
+
+You can also check the code coverage by using the command `composer coverage`, this will create a HTML file inside `./.coverage` directory.  
+
+There is also a code quality assurance by PHPStan, run `composer phpstan` whenever you want to check that.  
+
+And last but not least, you can use the Pest Mutation feature by running `composer test -- --mutate --parallel`.  
